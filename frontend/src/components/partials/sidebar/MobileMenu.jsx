@@ -11,8 +11,8 @@ import useMobileMenu from "@/hooks/useMobileMenu";
 import Icon from "@/components/ui/Icon";
 
 // import images
-import MobileLogo from "@/assets/images/logo/logo-c.svg";
-import MobileLogoWhite from "@/assets/images/logo/logo-c-white.svg";
+import MobileLogo from "@/assets/images/logo/ecell-logo.png";
+import MobileLogoWhite from "@/assets/images/logo/ecell-logo-white.png";
 import svgRabitImage from "@/assets/images/svg/rabit.svg";
 
 const MobileMenu = ({ className = "custom-class" }) => {
@@ -38,7 +38,7 @@ const MobileMenu = ({ className = "custom-class" }) => {
     <div
       className={`${className} fixed  top-0 bg-white dark:bg-slate-800 shadow-lg  h-full   w-[248px]`}
     >
-      <div className="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] h-[85px]  px-4 ">
+      <div className="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] h-[85px]  px-5 ">
         <Link to="/dashboard">
           <div className="flex items-center space-x-4">
             <div className="logo-icon">
@@ -47,11 +47,6 @@ const MobileMenu = ({ className = "custom-class" }) => {
               ) : (
                 <img src={MobileLogoWhite} alt="" />
               )}
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                DashCode
-              </h1>
             </div>
           </div>
         </Link>

@@ -1,4 +1,6 @@
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,22 +31,35 @@ INSTALLED_APPS = [
     #installed apps
     'users',
 
+    #cors headers
+    'corsheaders',
+
+    #rest framework
+    'rest_framework',
+
+    #djoser
+    'djoser', 
+
+    #social auth 
+    'social_django',
+
+    #jwt
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+
     #allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-
-    #rest framework
-    'rest_framework',
-    'rest_framework.authtoken',
-    'dj_rest_auth',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    #cors headers
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,6 +69,13 @@ MIDDLEWARE = [
     #allauth
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'abhinav.reddy@ecell-iitkgp.org'
+EMAIL_HOST_PASSWORD = '@Abhinav25102005-ecelliitkgp.org'
+EMAIL_USE_TLS = True
 
 ROOT_URLCONF = 'portal.urls'
 
@@ -91,9 +113,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
@@ -142,3 +164,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #custom authentication model
 AUTH_USER_MODEL = 'users.CustomUser'
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION':True,
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserCreateSerializer',
+        'user': 'users.serializers.UserCreateSerializer',
+        'user_delete': 'users.serializers.UserDeleteSerializer',
+    }, 
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+      ],
+      
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+      ],
+}
+
+SIMPLE_JWT = {
+     'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+CORS_ALLOW_CREDENTIALS = True

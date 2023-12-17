@@ -11,7 +11,7 @@ export const authApi = apiSlice.injectEndpoints({
     }),
     login: builder.mutation({
       query: (data) => ({
-        url: "",
+        url: "http://localhost:8000/auth/jwt/create/",
         method: "POST",
         body: data,
       }),

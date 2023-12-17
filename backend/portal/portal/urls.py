@@ -1,12 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls import include
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # path('student/', include('student.urls')),
+      path('admin/', admin.site.urls),
 
-    #rest framework
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+      #djoser
+      path('auth/', include('djoser.urls')),
+      path('auth/', include('djoser.urls.jwt')),
+      path('auth/', include('djoser.urls.authtoken')),
 ]
+
+urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]

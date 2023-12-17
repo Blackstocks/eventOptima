@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Card from "@/components/ui/Card";
+import { Redirect } from 'react-router-dom';
 
-const Dashboard = () => {
+function Dashboard() {
   return (
     <div>
       <Card title="Starter Kit">Your Dashboard</Card>

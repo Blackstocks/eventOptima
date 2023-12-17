@@ -93,7 +93,7 @@ const Header = ({ className = "custom-class" }) => {
                   <Icon icon="heroicons-outline:menu-alt-3" />
                 </div>
               )}
-              <SearchModal />
+              
             </div>
           )}
           {/* For Horizontal  */}
@@ -117,9 +117,9 @@ const Header = ({ className = "custom-class" }) => {
           ) : null}
           {/* Nav Tools  */}
           <div className="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse">
-            <Language />
+
             <SwitchDark />
-            <MonoChrome />
+
             {width >= breakpoints.md && <Message />}
             {width >= breakpoints.md && <Notification />}
             {width >= breakpoints.md && <Profile />}

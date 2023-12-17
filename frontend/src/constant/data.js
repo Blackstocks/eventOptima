@@ -9,31 +9,67 @@ export const menuItems = [
     icon: "heroicons-outline:home",
     link: "dashboard",
   },
+
   {
-    title: "Multi Level",
-    icon: "heroicons:share",
+    title: "Summit Details",
+    icon: "heroicons:calendar",
     link: "#",
     child: [
       {
-        childtitle: "Level 1.1",
-        childlink: "icons",
+        childtitle: "Events",
+        childlink: "events",
       },
+      
       {
-        childtitle: "Level 1.2",
-        childlink: "Level-1",
-        multi_menu: [
-          {
-            multiTitle: "Level 2.1",
-            multiLink: "Level-2",
-          },
-          {
-            multiTitle: "Level 2.2",
-            multiLink: "Level-2.3",
-          },
-        ],
+        childtitle: "Competitions",
+        childlink: "competitions",
       },
+
     ],
   },
+
+  {
+    title: "Payment",
+    icon: "heroicons-outline:currency-rupee",
+    link: "payment",
+  },
+
+  {
+    title: "Travel",
+    icon: "heroicons-outline:globe-americas",
+    link: "travel",
+  },
+
+  {
+    title: "Accomodation",
+    icon: "heroicons-outline:building-office",
+    link: "accomodation",
+  },
+
+  {
+    title: "Map",
+    icon: "heroicons-outline:map",
+    link: "map",
+  },
+
+  {
+    title: "Certificate",
+    icon: "heroicons-outline:document",
+    link: "certificate",
+  },
+
+  {
+    title: "FAQ",
+    icon: "heroicons-outline:question-mark-circle",
+    link: "faq",
+  },
+
+  {
+    title: "Contact Us",
+    icon: "heroicons-outline:chat-bubble-left",
+    link: "contact",
+  },
+
 ];
 
 export const topMenu = [
