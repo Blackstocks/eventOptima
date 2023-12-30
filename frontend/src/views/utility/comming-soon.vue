@@ -1,0 +1,43 @@
+<template>
+  <div class=" ml-4 mt-auto">
+      <div class="flex justify-between flex-wrap items-center">
+        <div class="max-w-[500px] space-y-4">
+          <div
+            class="relative flex space-x-3 items-center text-2xl text-slate-900 dark:text-white"
+          >
+            <span class="inline-block w-[25px] bg-secondary-500 h-[1px]"></span
+            ><span>Coming soon</span>
+          </div>
+          <div
+            class="xl:text-[70px] xl:leading-[70px] text-4xl font-semibold text-slate-900 dark:text-white"
+          >
+            Get notified when we launch
+          </div>
+          <p
+            class="font-normal text-slate-600 dark:text-slate-300 max-w-[400px]"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt.
+          </p>
+          
+        </div>
+        <div>
+          <img src="@/assets/images/svg/img-1.svg" alt="" />
+        </div>
+      </div>
+    </div>
+</template>
+
+<script>
+import Button from "@/components/Button";
+import Icon from "@/components/Icon";
+export default {
+  components: {
+    Button,
+    Icon,
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

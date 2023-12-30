@@ -30,6 +30,8 @@ INSTALLED_APPS = [
 
     #installed apps
     'users',
+    'student',
+    'summit',
 
     #cors headers
     'corsheaders',
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     #jwt
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'rest_framework.authtoken',
 
     #allauth
     'django.contrib.sites',
@@ -119,12 +122,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 SITE_ID = 1
@@ -173,7 +176,8 @@ DJOSER = {
         'user_create': 'users.serializers.UserCreateSerializer',
         'user': 'users.serializers.UserCreateSerializer',
         'user_delete': 'users.serializers.UserDeleteSerializer',
-    }, 
+        'current_user': 'users.serializers.UserSerializer',
+    },
 }
 
 REST_FRAMEWORK = {
@@ -188,6 +192,8 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
      'AUTH_HEADER_TYPES': ('JWT',),
+     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
 }
 
 CORS_ALLOW_CREDENTIALS = True

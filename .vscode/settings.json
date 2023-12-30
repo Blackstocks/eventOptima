@@ -1,0 +1,17 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.git": true,
+        "frontend/src/views/map": true,
+        "frontend/src/views/forms": true,
+        "frontend/src/views/chart": true,
+        "frontend/src/views/table": true,
+        "frontend/src/views/widgets": true
+    },
+    "explorerExclude.backup": {}
+}

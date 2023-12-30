@@ -1,5 +1,6 @@
-# from django.urls import path
+from django.urls import path
+from .views import DashboardView
 
-# urlpatterns = [
-#     path('', include('student.urls')),
-# ]
+urlpatterns = [
+    path('student/', DashboardView.as_view()),
+]
