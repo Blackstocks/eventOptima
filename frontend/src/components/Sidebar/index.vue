@@ -32,13 +32,13 @@
           "
         >
           <img
-            src="@/assets/images/logo/logo.svg"
+            src="@/assets/images/logo/ecell-logo.png"
             alt=""
             v-if="!this.$store.themeSettingsStore.isDark && !this.$store.themeSettingsStore.semidark"
           />
 
           <img
-            src="@/assets/images/logo/logo-white.svg"
+            src="@/assets/images/logo/ecell-logo-white.png"
             alt=""
             v-if="this.$store.themeSettingsStore.isDark || this.$store.themeSettingsStore.semidark"
           />
@@ -51,17 +51,17 @@
           "
         >
           <img
-            src="@/assets/images/logo/logo-c.svg"
+            src="@/assets/images/logo/ecell-logo-mobile-black.png"
             alt=""
             v-if="!this.$store.themeSettingsStore.isDark && !this.$store.themeSettingsStore.semidark"
           />
           <img
-            src="@/assets/images/logo/logo-c-white.svg"
+            src="@/assets/images/logo/ecell-logo-mobile.png"
             alt=""
             v-if="this.$store.themeSettingsStore.isDark || this.$store.themeSettingsStore.semidark"
           />
         </router-link>
-        <span
+        <!-- <span
           class="cursor-pointer text-slate-900 dark:text-white text-2xl"
           v-if="
             !this.$store.themeSettingsStore.sidebarCollasp ||
@@ -71,8 +71,8 @@
             this.$store.themeSettingsStore.sidebarCollasp = !this.$store.themeSettingsStore.sidebarCollasp
           "
         >
-          <!-- <Icon icon="heroicons-outline:menu-alt-3"
-        /> -->
+          <Icon icon="heroicons-outline:menu-alt-3"
+        />
           <div
             class="h-4 w-4 border-[1.5px] border-slate-900 dark:border-slate-700 rounded-full transition-all duration-150"
             :class="
@@ -81,7 +81,7 @@
                 : 'ring-2 ring-inset ring-offset-4 ring-black-900 dark:ring-slate-400 bg-slate-900 dark:bg-slate-400 dark:ring-offset-slate-700'
             "
           ></div>
-        </span>
+        </span> -->
       </div>
       <div
         class="h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none"
@@ -115,6 +115,10 @@ function Menu(){
 
   switch (user.user_type) {
     case "Student":
+      var menuItems = studentMenuItems;
+      break;
+
+    case "Campus Ambassador":
       var menuItems = studentMenuItems;
       break;
 

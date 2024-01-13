@@ -1,5 +1,5 @@
 <template>
-  <Dropdown classMenuItems="md:w-[300px] top-[58px]" classItem="px-4 py-2">
+  <!-- <Dropdown classMenuItems="md:w-[300px] top-[58px]" classItem="px-4 py-2">
     <span
       class="relative lg:h-[32px] lg:w-[32px] lg:bg-gray-500-f7 bg-slate-50 text-slate-900 lg:dark:bg-slate-900 dark:text-white cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"
       ><Icon icon="heroicons-outline:bell" class="animate-tada" />
@@ -82,7 +82,7 @@
         </MenuItem>
       </div>
     </template>
-  </Dropdown>
+  </Dropdown> -->
 </template>
 <script>
 import Dropdown from "@/components/Dropdown";

@@ -8,13 +8,20 @@
           COPYRIGHT &copy; 2024 Entrepreneurship Cell, IIT Kharagpur, All rights Reserved
         </div>
         <div class="ltr:md:text-right rtl:md:text-end text-center text-sm">
-          Visit GES'24
           <a
-            href="https://ges.ecell-iitkgp.org"
+            href="https://reg-ges.ecell-iitkgp.org/termsandconditions"
             target="_blank"
-            class="text-primary-500 font-semibold"
+            class="text-slate-900 font-semibold"
           >
-            Website
+            Terms & Conditions
+          </a>
+           | 
+          <a
+            href="https://reg-ges.ecell-iitkgp.org/refundpolicy"
+            target="_blank"
+            class="text-slate-900 font-semibold"
+          >
+            Refund Policy
           </a>
         </div>
       </div>

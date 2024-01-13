@@ -11,13 +11,12 @@
           <div
             class="xl:text-[70px] xl:leading-[70px] text-4xl font-semibold text-slate-900 dark:text-white"
           >
-            Get notified when we launch
+            Global Entrepreneurship Summit 2024
           </div>
           <p
             class="font-normal text-slate-600 dark:text-slate-300 max-w-[400px]"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt.
+            Entrepreneurship Cell, IIT Kharagpur
           </p>
           
         </div>

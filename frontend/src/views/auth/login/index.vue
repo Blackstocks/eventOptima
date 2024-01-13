@@ -1,37 +1,30 @@
 <template>
   <div class="loginwrapper">
     <div class="lg-inner-column">
-      <div class="left-column relative z-[1]">
-        <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
+      <div class="left-column relative z-[1] bg-[#010214]" style="background-color: #010214 !important;">
+        <div class="max-w-[520px] pt-24 ltr:pl-20 rtl:pr-20 text-center bg-[#010214]">
           <router-link to="/">
-            <img
-              :src="logo"
-              alt=""
-              class="mb-10"
-              v-if="!this.$store.themeSettingsStore.isDark"
-            />
             <img
               :src="logoWhite"
               alt=""
-              class="mb-10"
-              v-else
+              class="mb-4 mx-auto h-20"
             />
           </router-link>
 
-          <h4>
-            Global Entrepreneurship Summit
-            <span class="text-slate-800 dark:text-slate-400 font-bold"
-              >2024</span
-            >
-          </h4>
+          <p class=" mb-6">presents</p>
+
+          <img
+              src="../../../../src/assets/images/logo/ges.svg"
+              alt=""
+              class="mb-4 mx-auto"
+            />
 
         </div>
 
-        <div
-          class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]"
-        >
+        <div className="bg-[#010214] absolute bottom-[-20vh] -z-10 ">
+          <earth></earth>
+        </div>
         
-        </div>
       </div>
       <div class="right-column relative">
         <div
@@ -61,7 +54,7 @@
               </div>
             </div>
             <Signin />
-            <div
+            <!-- <div
               class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6"
             >
               <div
@@ -72,14 +65,14 @@
             </div>
             <div class="max-w-[242px] mx-auto mt-8 w-full">
               <Social />
-            </div>
+            </div> -->
             <div
               class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm"
             >
-              Don’t have an account? Sign up
+              Don’t have an account?
               <router-link
                 to="/register"
-                class="text-slate-900 dark:text-white font-medium hover:underline"
+                class="text-[#BE3A44] dark:text-white font-medium hover:underline"
               >
                 Sign up
               </router-link>
@@ -87,6 +80,22 @@
           </div>
           <div class="auth-footer text-center">
             Copyright 2024, Entrepreneurship Cell, IIT Kharagpur All Rights Reserved.
+            <br class="pt-4">
+            <a
+            href="https://reg-ges.ecell-iitkgp.org/termsandconditions"
+            target="_blank"
+            class="text-slate-900 font-semibold"
+          >
+            Terms & Conditions
+          </a>
+           | 
+          <a
+            href="https://reg-ges.ecell-iitkgp.org/refundpolicy"
+            target="_blank"
+            class="text-slate-900 font-semibold"
+          >
+            Refund Policy
+          </a>
           </div>
         </div>
       </div>
@@ -100,9 +109,11 @@ import Signin from "../common/Signin";
 import Social from "../common/Social";
 
 // Image Import
-import logoWhite from "@/assets/images/logo/logo-white.svg"
-import logo from "@/assets/images/logo/logo.svg"
+import logoWhite from "@/assets/images/logo/ecell-logo-white.png"
+import logo from "@/assets/images/logo/ecell-logo.png"
 import sideImg from "@/assets/images/auth/ils1.svg"
+
+import earth from "../common/earth.vue"
 
 export default {
   data () {
@@ -113,6 +124,7 @@ export default {
   components: {
     Social,
     Signin,
+    earth,
   },
 };
 </script>

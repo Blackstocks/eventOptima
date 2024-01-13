@@ -5,13 +5,13 @@
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
           <router-link to="/">
             <img
-              src="@/assets/images/logo/logo.svg"
+              src="@/assets/images/logo/ecell-logo.png"
               alt=""
               class="mb-10"
               v-if="!this.$store.themeSettingsStore.isDark"
             />
             <img
-              src="@/assets/images/logo/logo-white.svg"
+              src="@/assets/images/logo/ecell-logo-white.png"
               alt=""
               class="mb-10"
               v-else
@@ -41,7 +41,7 @@
             <div class="mobile-logo text-center mb-6 lg:hidden block">
               <router-link to="/"
                 ><img
-                  src="@/assets/images/logo/logo.svg"
+                  src="@/assets/images/logo/ecell-logo.png"
                   alt=""
                   class="mx-auto"
               /></router-link>

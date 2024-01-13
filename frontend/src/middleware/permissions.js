@@ -51,3 +51,21 @@ export async function professional({ next, store }) {
     }
   
 }
+
+export async function contingent({ next, store }) {
+    
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if(!user){
+        return next({ name: "Login" });
+    }
+
+    if((user.user_type == 'Contingent')){
+        return next();
+    }
+    
+    else{
+        return next({ name: "Login" });
+    }
+  
+}

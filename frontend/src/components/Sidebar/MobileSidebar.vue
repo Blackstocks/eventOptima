@@ -9,13 +9,13 @@
     <div class="logo-segment flex justify-between items-center px-4 py-6">
       <router-link :to="{ name: 'home' }">
         <img
-          src="@/assets/images/logo/logo.svg"
+          src="@/assets/images/logo/ecell-logo.png"
           alt=""
           v-if="!this.$store.themeSettingsStore.isDark"
         />
 
         <img
-          src="@/assets/images/logo/logo-white.svg"
+          src="@/assets/images/logo/ecell-logo-white.png"
           alt=""
           v-if="this.$store.themeSettingsStore.isDark"
         />
@@ -45,6 +45,10 @@ function Menu(){
 
   switch (user.user_type) {
     case "Student":
+      var menuItems = studentMenuItems;
+      break;
+
+    case "Campus Ambassador":
       var menuItems = studentMenuItems;
       break;
     

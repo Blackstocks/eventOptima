@@ -4,7 +4,7 @@
       label="Email"
       type="email"
       placeholder="Type your email"
-      name="emil"
+      name="email"
       v-model="email"
       :error="emailError"
       classInput="h-[48px]"
@@ -20,7 +20,7 @@
       classInput="h-[48px]"
     />
     <Select label="register as" name="userType" v-model="userType" :error="userTypeError" :options="selectOptions" />
-    <Checkbox name="checkbox" label="You accept our Terms and Conditions and Privacy Policy" checked disabled />
+    <Checkbox name="checkbox" label="You accept our Terms and Conditions and Refund Policy" checked disabled />
 
     <button type="submit" class="btn btn-dark block w-full text-center">
       Create an account
@@ -36,7 +36,9 @@ import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
 
 import { inject } from "vue";
-import { useRouter } from "vue-router";
+
+import { useRouter, useRoute } from "vue-router";
+
 import { useToast } from "vue-toastification";
 
 import axios from 'axios';
@@ -67,10 +69,10 @@ export default {
           value: "Professional",
           label: "Professional"
         },
-        {
-          value: "Contingent",
-          label: "Contingent"
-        },
+        // {
+        //   value: "Contingent",
+        //   label: "Contingent"
+        // },
       ]
     };
   },
@@ -93,6 +95,8 @@ export default {
     });
     // No need to define rules for fields
 
+    
+
     const { value: email, errorMessage: emailError } = useField("email");
     const { value: userType, errorMessage: userTypeError } = useField("userType");
     const { value: checkbox, errorMessage: checkboxError } = useField("checkbox");
@@ -100,7 +104,7 @@ export default {
 
     const onSubmit = handleSubmit(async (values) => {
       try {
-        const response = await axios.post('http://localhost:8000/auth/users/', {
+        const response = await axios.post('https://api-ges.ecell-iitkgp.org/auth/users/', {
           email: email.value,
           password: password.value,
           user_type: userType.value,

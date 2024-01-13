@@ -1,33 +1,30 @@
 <template>
   <div class="loginwrapper">
     <div class="lg-inner-column">
-      <div class="left-column relative z-[1]">
-        <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
+      <div class="left-column relative z-[1] bg-[#010214]" style="background-color: #010214 !important;">
+        <div class="max-w-[520px] pt-24 ltr:pl-20 rtl:pr-20 text-center">
           <router-link to="/">
             <img
-              src="@/assets/images/logo/logo.svg"
+              src="@/assets/images/logo/ecell-logo-white.png"
               alt=""
-              class="mb-10"
-              v-if="!this.$store.themeSettingsStore.isDark"
-            />
-            <img
-              src="@/assets/images/logo/logo-white.svg"
-              alt=""
-              class="mb-10"
-              v-else
+              class="mb-4 mx-auto h-20"
             />
           </router-link>
 
-          <h4>
-            Global Entrepreneurship Summit
-            <span class="text-slate-800 dark:text-slate-400 font-bold"
-              >2024</span
-            >
-          </h4>
+          <p class=" mb-6">presents</p>
+
+          <img
+              src="../../../../src/assets/images/logo/ges.svg"
+              alt=""
+              class="mb-4 mx-auto"
+            />
+
         </div>
-        <div class="absolute left-0 bottom-[-130px] h-full w-full z-[-1]">
-          
+
+        <div className="bg-[#010214] absolute bottom-[-20vh] -z-10 ">
+          <earth></earth>
         </div>
+        
       </div>
       <div class="right-column relative bg-white dark:bg-slate-800">
         <div
@@ -37,7 +34,7 @@
             <div class="mobile-logo text-center mb-6 lg:hidden block">
               <router-link to="/"
                 ><img
-                  src="@/assets/images/logo/logo.svg"
+                  src="@/assets/images/logo/ecell-logo.png"
                   alt=""
                   class="mx-auto"
               /></router-link>
@@ -49,7 +46,7 @@
               </div>
             </div>
             <Signup />
-            <div
+            <!-- <div
               className=" relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6"
             >
               <div
@@ -60,14 +57,14 @@
             </div>
             <div class="max-w-[242px] mx-auto mt-8 w-full">
               <Social />
-            </div>
+            </div> -->
             <div
               class="max-w-[215px] mx-auto font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-6 uppercase text-sm"
             >
               Already registered?
               <router-link
                 to="/"
-                class="text-slate-900 dark:text-white font-medium hover:underline"
+                class="text-[#BE3A44] dark:text-white font-medium hover:underline"
               >
                 Sign In</router-link
               >
@@ -75,6 +72,22 @@
           </div>
           <div class="auth-footer text-center">
             Copyright 2024, Entrepreneurship Cell, IIT Kharagpur All Rights Reserved.
+            <br class="pt-4">
+            <a
+            href="https://reg-ges.ecell-iitkgp.org/termsandconditions"
+            target="_blank"
+            class="text-slate-900 font-semibold"
+          >
+            Terms & Conditions
+          </a>
+           | 
+          <a
+            href="https://reg-ges.ecell-iitkgp.org/refundpolicy"
+            target="_blank"
+            class="text-slate-900 font-semibold"
+          >
+            Refund Policy
+          </a>
           </div>
         </div>
       </div>
@@ -85,10 +98,13 @@
 import Signup from "../common/Signup";
 import Social from "../common/Social";
 
+import earth from "../common/earth.vue"
+
 export default {
   components: {
     Social,
     Signup,
+    earth,
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit" class="space-y-4">
+  <form ref="signin" @submit.prevent="onSubmit" class="space-y-4">
     <Textinput
       label="Email"
       type="email"
@@ -20,13 +20,13 @@
       classInput="h-[48px]"
     />
 
-    <div class="flex justify-between">
+    <!-- <div class="flex justify-between">
       <router-link
         to="/forgot-password"
         class="text-sm text-slate-800 dark:text-slate-400 leading-6 font-medium"
         >Forgot Password?</router-link
       >
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-dark block w-full text-center">
       Sign in
@@ -75,7 +75,7 @@ export default {
     const onSubmit = async () => {
 
       try {
-        const response = await axios.post('http://localhost:8000/auth/jwt/create/', {
+        const response = await axios.post('https://api-ges.ecell-iitkgp.org/auth/jwt/create/', {
           email:  email.value,
           password: password.value
         }, {
@@ -90,7 +90,7 @@ export default {
           
           try {
             const accessToken = localStorage.getItem('accessToken');
-            const response = await axios.get('http://localhost:8000/auth/users/me/', {
+            const response = await axios.get('https://api-ges.ecell-iitkgp.org/auth/users/me/', {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${accessToken}`
@@ -118,6 +118,10 @@ export default {
 
           else if(user.user_type == "Professional"){
             router.push("/professional/home");
+          }
+
+          else if(user.user_type == "Contingent"){
+            router.push("/contingent/home");
           }
           
           toast.success("Login successfully", { timeout: 2000 });

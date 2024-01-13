@@ -1,355 +1,406 @@
 <template>
-    <div>
-      <div class="flex z-[5] items-center relative justify-center md:mx-8">
-        <div
-          class="relative z-[1] items-center item flex flex-start flex-1 last:flex-none group"
-          v-for="(item, i) in steps"
-          :key="i"
-        >
-          <div
-            :class="`   ${
-              stepNumber >= i
-                ? 'bg-slate-900 text-white ring-slate-900 ring-offset-2 dark:ring-offset-slate-500 dark:bg-slate-900 dark:ring-slate-900'
-                : 'bg-white ring-slate-900 ring-opacity-70  text-slate-900 dark:text-slate-300 dark:bg-slate-600 dark:ring-slate-600 text-opacity-70'
-            }`"
-            class="transition duration-150 icon-box md:h-12 md:w-12 h-7 w-7 rounded-full flex flex-col items-center justify-center relative z-[66] ring-1 md:text-lg text-base font-medium"
-          >
-            <span v-if="stepNumber <= i"> {{ i + 1 }}</span>
-            <span v-else class="text-3xl">
-              <Icon icon="bx:check-double" />
-            </span>
-          </div>
   
-          <div
-            class="absolute top-1/2 h-[2px] w-full"
-            :class="
-              stepNumber >= i
-                ? 'bg-slate-900 dark:bg-slate-600'
-                : 'bg-[#E0EAFF] dark:bg-slate-800'
-            "
-          ></div>
-  
-          <div
-            class="absolute top-full text-base md:leading-6 mt-3 transition duration-150 md:opacity-100 opacity-0 group-hover:opacity-100"
-            :class="
-              stepNumber >= i
-                ? ' text-slate-900 dark:text-slate-300'
-                : 'text-slate-500 dark:text-slate-300 dark:text-opacity-40'
-            "
-          >
-            <span class="w-max">{{ item.title }}</span>
+  <div>
+      <form @submit.prevent="submit" class=" flex flex-col gap-4">
+        <Card class="content-box mt-14 border-t border-slate-100 dark:border-slate-700 p-6 mx-4 rounded-md bg-white dark:bg-slate-800">
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+            <div class="lg:col-span-3 md:col-span-2 col-span-1">
+                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
+                  Basic Details
+                </h4>
+            </div>
+            <Textinput label="Full Name" type="text" placeholder="Full Name" v-model="fullName" :error="fullNameError" />
+            <Textinput label="Phone" type="text" placeholder="Phone" v-model="phone" :error="phoneError" />
+            <Select label="Gender" placeholder="Select your Gender" v-model="gender" :error="genderError" :options="genderOptions" />
+            <Textinput label="LinkedIn Profile" type="text" placeholder="LinkedIn Profile URL" v-model="linkedinId" :error="linkedinIdError" />
+            <Select label="Alumn of IIT Kharagpur" placeholder="Select an option" v-model="alumn" :error="alumnError" :options="alumnOptions" />
+            <Textinput label="Cofounder Name" type="text" placeholder="Cofounder Name" v-model="cofounderName" :error="cofounderNameError" />
+            <Textinput label="Cofounder Phone" type="text" placeholder="Cofounder Phone" v-model="cofounderPhone" :error="cofounderPhoneError" />
+            <Textinput label="Cofounder Email" type="text" placeholder="Cofounder Email" v-model="cofounderEmail" :error="cofounderEmailError" />
+            <Textinput label="Address (City)" type="text" placeholder="City" v-model="city" :error="cityError" />
+            <Select label="State" placeholder="State" v-model="state" :error="stateError" :options="stateOptions" />
+            <Select label="Country" placeholder="Country" v-model="country" :error="countryError" :options="countryOptions" />
           </div>
+        </Card>
+
+        <Card class="content-box mt-14 border-t border-slate-100 dark:border-slate-700 p-6 mx-4 rounded-md bg-white dark:bg-slate-800">
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+            <div class="lg:col-span-3 md:col-span-2 col-span-1">
+                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
+                  Startup Details
+                </h4>
+            </div>
+            <Textinput label="Startup Name" type="text" placeholder="Startup Name" v-model="startup" :error="startupError" />
+            <Select label="Startup Stage?" placeholder="Stage of your Startup" v-model="startupStage" :error="startupStageError" :options="startupStageOptions" />
+            <Textinput label="Startup Funding" type="text" placeholder="Startup Funding" v-model="fundingStartup" :error="fundingStartupError" />
+            <Select label="Company Type" placeholder="Your company type" v-model="companyType" :error="companyTypeError" :options="companyTypeOptions" />
+            <Select label="Company Size" placeholder="Select company size" v-model="companySize" :error="companySizeError" :options="companySizeOptions" />
+            <Textarea label="Startup Description" type="text" placeholder="Describe your startup" v-model="desc" :error="descError" />
+            <Textinput label="Website Link" type="text" placeholder="Startup Website" v-model="website" :error="websiteError" />
+          </div>
+        </Card>
+
+        <Card class="content-box mt-14 border-t border-slate-100 dark:border-slate-700 p-6 mx-4 rounded-md bg-white dark:bg-slate-800">
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+            <div class="lg:col-span-3 md:col-span-2 col-span-1">
+                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
+                  Additional Information
+                </h4>
+            </div>
+            <Select label="Interested in Startup Expo?" placeholder="Yes/No" v-model="startupExpo" :error="startupExpoError" :options="startupExpoOptions" />
+            <Select label="Interns Requirement?" placeholder="Yes/No" v-model="interns" :error="internsError" :options="internsOptions" />
+            <Textarea label="Achievements" type="text" placeholder="Describe your startup's achievements" v-model="achieve" :error="achieveError" />
+            <Textarea label="Areas of Help" type="text" placeholder="Looking for help in any areas?" v-model="help" :error="helpError" />
+          </div>
+        </Card>
+
+        <div class="my-2" :class="stepNumber > 0 ? 'flex justify-between' : 'text-right'">
+          <Button :text="'submit'" btnClass="btn-dark" />
         </div>
-      </div>
-  
-      <div
-        class="conten-box mt-14 border-t border-slate-100 dark:border-slate-700 p-6 mx-4 rounded-md bg-white dark:bg-slate-800"
-      >
-        <form @submit.prevent="submit">
-          <div v-if="stepNumber === 0">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-              <div class="lg:col-span-3 md:col-span-2 col-span-1">
-                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
-                  Enter Your Account Details
-                </h4>
-              </div>
-              <Textinput
-                label="Username"
-                type="text"
-                placeholder="Type your User Name"
-                name="userName"
-                v-model="username"
-                :error="usernameError"
-              />
-              <Textinput
-                label="Full name"
-                type="text"
-                placeholder="Full name"
-                name="fullname"
-                v-model="fullname"
-                :error="fullnameError"
-              />
-              <Textinput
-                label="Email"
-                type="email"
-                placeholder="Type your email"
-                name="emil"
-                v-model="email"
-                :error="emailError"
-              />
-              <InputGroup
-                label="Phone Number"
-                type="text"
-                prepend="MY (+6)"
-                placeholder="Phone Number"
-                name="phoneNumber"
-                v-model="phone"
-                :error="phoneError"
-              />
-              <Textinput
-                label="Password"
-                type="password"
-                placeholder="8+ characters, 1 capitat letter "
-                name="multi_password"
-                v-model="password"
-                :error="passwordError"
-                hasicon
-              />
-              <Textinput
-                label="Confirm Password"
-                type="password"
-                placeholder="Password"
-                name="multi_password2"
-                v-model="confirmpass"
-                :error="confirmpassError"
-                hasicon
-              />
-            </div>
-          </div>
-          <div v-if="stepNumber === 1">
-            <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
-              <div class="md:col-span-2 col-span-1">
-                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
-                  Enter Your Personal info-500
-                </h4>
-              </div>
-              <Textinput
-                label="First name"
-                type="text"
-                placeholder="First name"
-                name="firstname"
-                v-model="fname"
-                :error="fnameError"
-              />
-              <Textinput
-                label="Last name"
-                type="text"
-                placeholder="Last name"
-                name="lasttname"
-                v-model="lname"
-                :error="lnameError"
-              />
-            </div>
-          </div>
-          <div v-if="stepNumber === 2">
-            <div class="grid grid-cols-1 gap-5">
-              <div class="">
-                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
-                  Enter Your Address
-                </h4>
-              </div>
-              <Textarea
-                label="Address"
-                type="text"
-                placeholder="Write Address"
-                name="address"
-                v-model="address"
-                :error="addressError"
-              />
-            </div>
-          </div>
-          <div v-if="stepNumber === 3">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-              <div class="lg:col-span-3 md:col-span-2 col-span-1">
-                <h4 class="text-base text-slate-800 dark:text-slate-300 mb-6">
-                  Enter Your Address
-                </h4>
-              </div>
-              <Textinput
-                label="Facebook"
-                type="text"
-                placeholder="https://www.facebook.com/profile"
-                name="fburl"
-                v-model="fburl"
-                :error="fbError"
-              />
-            </div>
-          </div>
-  
-          <div
-            class="mt-10"
-            :class="stepNumber > 0 ? 'flex justify-between' : ' text-right'"
-          >
-            <Button
-              @click.prevent="prev()"
-              text="prev"
-              btnClass="btn-dark"
-              v-if="this.stepNumber !== 0"
-            />
-            <Button
-              :text="stepNumber !== this.steps.length - 1 ? 'next' : 'submit'"
-              btnClass="btn-dark"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
-  </template>
-  <script>
-  import Button from "@/components/Button";
-  import Icon from "@/components/Icon";
-  import InputGroup from "@/components/InputGroup";
-  import Textarea from "@/components/Textarea";
-  import Textinput from "@/components/Textinput";
-  import { useField, useForm } from "vee-validate";
-  import { computed, ref } from "vue";
-  import { useToast } from "vue-toastification";
-  import * as yup from "yup";
-  export default {
-    components: {
-      Button,
-      Icon,
-      Textinput,
-      InputGroup,
-      Textarea,
-    },
-  
-    setup() {
-      let steps = [
+      </form>
+  </div>
+</template>
+
+<script>
+import Button from "@/components/Button";
+import Textinput from "@/components/Textinput";
+import Textarea from "@/components/Textarea";
+import Select from "@/components/Select";
+import Card from "@/components/Card";
+import { useField, useForm } from "vee-validate";
+import { computed, ref } from "vue";
+import { useToast } from "vue-toastification";
+import * as yup from "yup";
+import axios from 'axios';
+
+export default {
+  components: {
+    Button,
+    Textinput,
+    Textarea,
+    Select,
+    Card,
+  },
+
+  setup() {
+    const toast = useToast();
+    const steps = [
+      { id: 1, title: "Basic Information" },
+      { id: 2, title: "Startup Details" },
+      { id: 3, title: "Additional Information" },
+    ];
+
+    let stepNumber = ref(0);
+
+    // Validation Schemas
+    let formSchema = yup.object().shape({
+      fullName: yup.string().required("Full name is required"),
+      phone: yup.string().required("Phone number is required").matches(/^[0-9]+$/, "Phone number must be numeric"),
+      gender: yup.string().required("Gender is required"),
+      linkedinId: yup.string().required("LinkedIn profile is required").url("LinkedIn profile must be a valid URL"),
+      alumn: yup.string().required("Alumn of IIT Kharagpur selection is required"),
+      cofounderName: yup.string(), // Include validation as required
+      cofounderPhone: yup.string().matches(/^[0-9]+$/, "Phone number must be numeric"),
+      cofounderEmail: yup.string().email("Email must be a valid email"),
+      city: yup.string().required("City is required"),
+      state: yup.string().required("State is required"),
+      country: yup.string().required("Country is required"),
+      startup: yup.string().required("Startup name is required"),
+      startupStage: yup.string().required("Startup stage is required"),
+      fundingStartup: yup.string().required("Startup stage is required"),
+      companyType: yup.string().required("Company type is required"),
+      companySize: yup.string().required("Company size is required"),
+      desc: yup.string().required("Startup description is required"),
+      website: yup.string().url("Website must be a valid URL"),
+      startupExpo: yup.string().required("Interested in Startup Expo? is required"),
+      interns: yup.string().required("Interns Requirement? is required"),
+      achieve: yup.string(), // Include validation as required
+      help: yup.string(), // Include validation as required
+    });
+
+    const { handleSubmit } = useForm({
+      validationSchema: formSchema,
+      keepValuesOnUnmount: true,
+    });
+
+    // Define useField for all fields in all steps
+    const { value: fullName, errorMessage: fullNameError } = useField("fullName");
+    const { value: phone, errorMessage: phoneError } = useField("phone");
+    const { value: gender, errorMessage: genderError } = useField("gender");
+    const { value: linkedinId, errorMessage: linkedinIdError } = useField("linkedinId");
+    const { value: alumn, errorMessage: alumnError } = useField("alumn");
+    const { value: cofounderName, errorMessage: cofounderNameError } = useField("cofounderName");
+    const { value: cofounderPhone, errorMessage: cofounderPhoneError } = useField("cofounderPhone");
+    const { value: cofounderEmail, errorMessage: cofounderEmailError } = useField("cofounderEmail");
+    const { value: city, errorMessage: cityError } = useField("city");
+    const { value: state, errorMessage: stateError } = useField("state");
+    const { value: country, errorMessage: countryError } = useField("country");
+    const { value: startup, errorMessage: startupError } = useField("startup");
+    const { value: startupStage, errorMessage: startupStageError } = useField("startupStage");
+    const { value: fundingStartup, errorMessage: fundingStartupError } = useField("fundingStartup");
+    const { value: companyType, errorMessage: companyTypeError } = useField("companyType");
+    const { value: desc, errorMessage: descError } = useField("desc");
+    const { value: website, errorMessage: websiteError } = useField("website");
+    const { value: startupExpo, errorMessage: startupExpoError } = useField("startupExpo");
+    const { value: interns, errorMessage: internsError } = useField("interns");
+    const { value: achieve, errorMessage: achieveError } = useField("achieve");
+    const { value: help, errorMessage: helpError } = useField("help");
+    const { value: companySize, errorMessage: companySizeError } = useField("companySize");
+
+    // Options for select fields
+    const alumnOptions = ref([
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ]);
+
+    const genderOptions = ref([
         {
-          id: 1,
-          title: "Account Details",
+          value: "Male",
+          label: "Male"
         },
         {
-          id: 2,
-          title: "Personal info-500",
+          value: "Female",
+          label: "Female"
         },
         {
-          id: 3,
-          title: "Address",
+          value: "Others",
+          label: "Others"
         },
         {
-          id: 4,
-          title: "Social Links",
+          value: "Prefer not say",
+          label: "Prefer not say"
         },
-      ];
-      const toast = useToast();
-      let stepNumber = ref(0);
-  
-      // step by step yup schemea
-      let stepSchema = yup.object().shape({
-        username: yup.string().required(" User name is required"),
-        fullname: yup.string().required("Full name is required"),
-        email: yup
-          .string()
-          .email("Email is not valid")
-          .required("Email is required"),
-        phone: yup
-          .string()
-          .required("Phone number is required")
-          .matches(/^[0-9]{12}$/, "Phone number is not valid"),
-        password: yup
-          .string()
-          .required("Password is required")
-          .min(8, "Password must be at least 8 characters"),
-        confirmpass: yup
-          .string()
-          .required("Confirm Password is required")
-          .oneOf([yup.ref("password"), null], "Passwords must match"),
-      });
-  
-      let personalSchema = yup.object().shape({
-        fname: yup.string().required(" First name is required"),
-        lname: yup.string().required(" Last name is required"),
-      });
-      let addressSchema = yup.object().shape({
-        address: yup.string().required(" Address is required"),
-      });
-      const url =
-        /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
-  
-      let socialSchema = yup.object().shape({
-        fburl: yup
-          .string()
-          .required("Facebook url is required")
-          .matches(url, "Facebook url is not valid"),
-      });
-  
-      // find current step schema
-      let currentSchema = computed(() => {
-        switch (stepNumber.value) {
-          case 0:
-            return stepSchema;
-          case 1:
-            return personalSchema;
-          case 2:
-            return addressSchema;
-          case 3:
-            return socialSchema;
-          default:
-            return stepSchema;
-        }
-      });
-  
-      const { handleSubmit } = useForm({
-        validationSchema: currentSchema,
-        keepValuesOnUnmount: true,
-      });
-  
-      const { value: email, errorMessage: emailError } = useField("email");
-      const { value: username, errorMessage: usernameError } =
-        useField("username");
-      const { value: fullname, errorMessage: fullnameError } =
-        useField("fullname");
-      const { value: phone, errorMessage: phoneError } = useField("phone");
-      const { value: password, errorMessage: passwordError } =
-        useField("password");
-      const { value: confirmpass, errorMessage: confirmpassError } =
-        useField("confirmpass");
-      const { value: fname, errorMessage: fnameError } = useField("fname");
-      const { value: lname, errorMessage: lnameError } = useField("lname");
-      const { value: address, errorMessage: addressError } = useField("address");
-      const { value: fburl, errorMessage: fbError } = useField("fburl");
-  
-      const submit = handleSubmit(() => {
-        // next step until last step . if last step then submit form
-        let totalSteps = steps.length;
-        const isLastStep = stepNumber.value === totalSteps - 1;
-        if (isLastStep) {
-          stepNumber = totalSteps - 1;
-  
-          toast.success -
-            500("Form Submited", {
-              timeout: 2000,
+      ]);
+
+    const stateOptions = ref([
+        { value: "Andhra Pradesh", label: "Andhra Pradesh" },
+        { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
+        { value: "Assam", label: "Assam" },
+        { value: "Bihar", label: "Bihar" },
+        { value: "Chhattisgarh", label: "Chhattisgarh" },
+        { value: "Goa", label: "Goa" },
+        { value: "Gujarat", label: "Gujarat" },
+        { value: "Haryana", label: "Haryana" },
+        { value: "Himachal Pradesh", label: "Himachal Pradesh" },
+        { value: "Jammu and Kashmir", label: "Jammu and Kashmir" },
+        { value: "Jharkhand", label: "Jharkhand" },
+        { value: "Karnataka", label: "Karnataka" },
+        { value: "Kerala", label: "Kerala" },
+        { value: "Madhya Pradesh", label: "Madhya Pradesh" },
+        { value: "Maharashtra", label: "Maharashtra" },
+        { value: "Manipur", label: "Manipur" },
+        { value: "Meghalaya", label: "Meghalaya" },
+        { value: "Mizoram", label: "Mizoram" },
+        { value: "Nagaland", label: "Nagaland" },
+        { value: "Odisha", label: "Odisha" },
+        { value: "Punjab", label: "Punjab" },
+        { value: "Rajasthan", label: "Rajasthan" },
+        { value: "Sikkim", label: "Sikkim" },
+        { value: "Tamil Nadu", label: "Tamil Nadu" },
+        { value: "Telangana", label: "Telangana" },
+        { value: "Tripura", label: "Tripura" },
+        { value: "Uttarakhand", label: "Uttarakhand" },
+        { value: "Uttar Pradesh", label: "Uttar Pradesh" },
+        { value: "West Bengal", label: "West Bengal" },
+        { value: "Andaman and Nicobar Islands", label: "Andaman and Nicobar Islands" },
+        { value: "Chandigarh", label: "Chandigarh" },
+        { value: "Dadra and Nagar Haveli", label: "Dadra and Nagar Haveli" },
+        { value: "Daman and Diu", label: "Daman and Diu" },
+        { value: "Delhi", label: "Delhi" },
+        { value: "Lakshadweep", label: "Lakshadweep" },
+        { value: "Puducherry", label: "Puducherry" },
+      ]);
+
+    const countryOptions = ref([
+        {
+          value: "India",
+          label: "India"
+        },
+        {
+          value: "Sri Lanka",
+          label: "Sri Lanka"
+        },
+        {
+          value: "Nepal",
+          label: "Nepal"
+        },
+        {
+          value: "USA",
+          label: "USA"
+        },
+        {
+          value: "UK",
+          label: "UK"
+        },
+        {
+          value: "Australia",
+          label: "Australia"
+        },
+        {
+          value: "Canada",
+          label: "Canada"
+        },
+      ]);
+
+    const startupStageOptions = ref([
+      { value: "idea", label: "Idea" },
+      { value: "concept", label: "Concept" },
+      { value: "pre_seed", label: "Pre-Seed" },
+      { value: "seed", label: "Seed" },
+      { value: "early_stage", label: "Early Stage" },
+      { value: "growth", label: "Growth" },
+      { value: "expansion", label: "Expansion" },
+      { value: "mature", label: "Mature" },
+      { value: "exit", label: "Exit" },
+    ]);
+
+    const companyTypeOptions = ref([
+      { value: "private", label: "Private Limited" },
+      { value: "public", label: "Public Limited" },
+      { value: "partnership", label: "Partnership" },
+      { value: "sole_proprietorship", label: "Sole Proprietorship" },
+      { value: "llc", label: "Limited Liability Company (LLC)" },
+      { value: "nonprofit", label: "Nonprofit" },
+      { value: "cooperative", label: "Cooperative" },
+      { value: "other", label: "Other" },
+    ]);
+
+    const companySizeOptions = ref([
+      { value: "1-10", label: "1-10 employees" },
+      { value: "11-50", label: "11-50 employees" },
+      { value: "51-200", label: "51-200 employees" },
+      { value: "201-500", label: "201-500 employees" },
+      { value: "501-1000", label: "501-1000 employees" },
+      { value: "1001-5000", label: "1001-5000 employees" },
+      { value: "5001-10000", label: "5001-10000 employees" },
+      { value: "10001+", label: "10001+ employees" },
+    ]);
+
+    const startupExpoOptions = ref([
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ]);
+
+    const internsOptions = ref([
+      { value: "yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ]);
+
+    const submit = handleSubmit(async() => {
+      
+      const formData = {
+        full_name: fullName.value,
+        phone: phone.value,
+        gender: gender.value,
+        linkedin_id: linkedinId.value,
+        alumn_of_iit_kharagpur: alumn.value,
+        co_founder_name: cofounderName.value,
+        co_founder_phone: cofounderPhone.value,
+        co_founder_email: cofounderEmail.value,
+        address: city.value,
+        state: state.value,
+        country: country.value,
+
+        startup_name: startup.value,
+        startup_stage: startupStage.value,
+        startup_fund: fundingStartup.value,
+        company_type: companyType.value,
+        company_size: companySize.value,
+        startup_description: desc.value,
+        website_link: website.value,
+        
+        interested_in_expo: startupExpo.value,
+        intern_requirement: interns.value,
+        achievements: achieve.value,
+        area_of_help: help.value,
+      };
+
+      console.log(formData);
+
+      const accessToken = localStorage.getItem('accessToken');
+
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      try {
+        const response = await axios.post('https://api-ges.ecell-iitkgp.org/startup/registration', {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${accessToken}`,
+              }, user, formData
             });
-        } else {
-          stepNumber.value++;
-        }
-      });
-  
-      const prev = () => {
-        stepNumber.value--;
-      };
-  
-      return {
-        fullname,
-        fullnameError,
-        phone,
-        phoneError,
-        password,
-        passwordError,
-        confirmpass,
-        confirmpassError,
-        fname,
-        fnameError,
-        lname,
-        lnameError,
-        address,
-        addressError,
-        email,
-  
-        emailError,
-        username,
-        usernameError,
-        submit,
-        steps,
-        stepNumber,
-        prev,
-        fburl,
-        fbError,
-      };
-    },
-  };
-  </script>
-  <style lang="scss" scoped></style>
-  
+
+        toast.success("Form Submitted", { timeout: 2000 });
+        window.location.href = "/startup/home";
+
+        // Handle successful response
+      } catch (error) {
+        toast.error("Failed to submit form", { timeout: 2000 });
+        // Handle errors (e.g., display error message)
+      }
+
+    });
+
+    return {
+      fullName,
+      fullNameError,
+      phone,
+      phoneError,
+      gender,
+      genderError,
+      genderOptions,
+      linkedinId,
+      linkedinIdError,
+      alumn,
+      alumnError,
+      alumnOptions,
+      cofounderName,
+      cofounderNameError,
+      cofounderPhone,
+      cofounderPhoneError,
+      cofounderEmail,
+      cofounderEmailError,
+      city,
+      cityError,
+      state,
+      stateError,
+      stateOptions,
+      country,
+      countryError,
+      countryOptions,
+      startup,
+      startupError,
+      startupStage,
+      startupStageError,
+      startupStageOptions,
+      fundingStartup,
+      fundingStartupError,
+      companyType,
+      companyTypeError,
+      companyTypeOptions,
+      companySize,
+      companySizeError,
+      companySizeOptions,
+      desc,
+      descError,
+      website,
+      websiteError,
+      startupExpo,
+      startupExpoError,
+      startupExpoOptions,
+      interns,
+      internsError,
+      internsOptions,
+      achieve,
+      achieveError,
+      help,
+      helpError,
+      submit,
+      steps,
+      stepNumber
+    };
+  },
+};
+</script>
+
+
+<style lang="scss" scoped></style>

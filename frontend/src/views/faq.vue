@@ -71,71 +71,65 @@
       return {
         faqmenus: [
           {
-            title: "Getting started",
+            title: "Registration",
           },
           {
-            title: "Privacy & security",
+            title: "Campus Ambassador",
           },
-          {
-            title: "Legal",
-          },
+          // {
+          //   title: "Legal",
+          // },
         ],
         items: [
           {
-            title: "How does Dashcode work?",
+            title: "Student Registration?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "Student Individual - If you want to attend GES not as a part of any contingent, you can register under this category.",
           },
           {
-            title: "Where i can learn more about using Dashcode?",
+            title: "Campus Ambassador Registration?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "Campus Ambassador - If you want to be a Campus Ambassador of GES in your college, you can register under this category.",
           },
           {
-            title: "Why Dashcode is so important?",
+            title: "Professional Registration?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "Professional - A professor, faculty from any collegeor a working professional can attend GES under this category.",
           },
           {
-            title: "Where can i find Dashcode?",
+            title: "College Contingent Registration?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "College Contingent - You can form a contingent of four or more student individual(s).All contingent members have to register as individual student or professor first before registering as contingent.",
           },
           {
-            title: "Why Dashcode is so important?",
+            title: "Startup Registration?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "Startup - If you are a startup and want to showcase your product in GES, you can register under this category. If any startup wants to participate in Startup Camp and related events as a startup, you need to register under this category. You cannot attend GES as a college contingent or part of any college contingent. Any startup  professional who does not want to participate in Startup Camp and related events can attend GES under Professional category and not under Startup Camp category.",
           },
+          {
+            title: "Terms & Conditions",
+            content:
+              "Payment is non-refundable, under any circumstances whatsoever. Tshirt of specified size will be provided only on availability (till stocks last). Accommodation inside campus is mandatory. Paraphernalia required will be provided on arrival. Any person found flouting institute rules will be subjected to disciplinary proceedings and as a consequence, the respective college may be debarred from GES forever in the future. Registration Fees has to be paid completely in one installment, as given in the website. No concessions will be permitted except those mentioned on website. Appliances and belongings are the sole responsibility of the participants. E-Cell, IIT Kharagpur is not responsible for any loss or damage caused.",
+          },
+          // {
+          //   title: "Fees",
+          //   content:
+          //     "Student Individual : INR College Contingent</b> :  <b>Professional</b> : INR  <b>Campus Ambassador</b> : <b>Empresario Semi-Finalists</b> : <b>For Startups</b> : ",
+          // },
         ],
         items2: [
           {
-            title: "How does Dashcode work?",
+            title: "What would be the roles of the Campus Ambassador",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "Acting as a link between IIT Kharagpur and their own campus.",
           },
           {
-            title: "Where i can learn more about using Dashcode?",
+            title: "What are the requirements for being the Campus Ambassador?",
             content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
+              "There are no requirements to be a Campus Ambassador, you just need to be enthusiastic about entrepreneurship. ",
           },
         ],
-        items3: [
-          {
-            title: "How does Dashcode work?",
-            content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
-          },
-          {
-            title: "Where i can learn more about using Dashcode?",
-            content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
-          },
-          {
-            title: "Where can i find Dashcode?",
-            content:
-              "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
-          },
-        ],
+
       };
     },
   };

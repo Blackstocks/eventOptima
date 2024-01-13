@@ -1,0 +1,107 @@
+<template>
+    <section class="py-16 lg:py-20 ">
+        <div class="container">
+            <div class="grid items-center grid-cols-4 gap-6 lg:grid-cols-12">
+                <div class="justify-center col-span-4 border-b border-b-wuiSlate-200 lg:col-span-8 lg:col-start-3">
+                    <h1 class="pb-6 text-4xl font-medium text-wuiSlate-900">Global Entrepreneurship Summit 2024</h1>
+                    <p class="pb-6 text-lg">Read about the terms and conditions.</p>
+                </div>
+                <div class="justify-center col-span-4 lg:col-span-8 lg:col-start-3">
+                
+                <h2 class="pb-6 text-xl font-medium text-wuiSlate-800">Acceptance of Terms:</h2>
+                
+                <p class="pb-6 text-md">By registering for the Global Entrepreneurship Summit 2024 through our website, you agree to comply with and be bound by these terms and conditions.</p>
+                
+                <h2 class="text-xl font-medium text-wuiSlate-800">Registration and Fees:</h2>
+                
+                <p class="pb-6 text-md">
+                    <br>
+                    (1) Registration for the Summit requires completing the online registration form and paying the registration fee through the designated payment gateway. 
+                    <br>
+                    (2) All fees are non-refundable unless otherwise stated in these Terms.
+                    <br> 
+                    (3) Registration fees cover your access to the Summit program, including workshops, talks, networking events, and accommodation on campus.
+                </p>
+                    
+                    <h2 class="pb-6 text-xl font-medium text-wuiSlate-800">Confirmation of Registration:</h2>
+                    
+                    <p class="pb-6 text-md">Your registration is complete only upon successful payment. You will receive a confirmation email with details about the summit after the payment is processed.</p>
+                    
+                    <h2 class="pb-6 text-xl font-medium text-wuiSlate-800">Event Changes:</h2>
+                    
+                    <p class="pb-6 text-md">Entrepreneurship Cell, IIT Kharagpur reserves the right to change the schedule, speakers, or any other aspect of the summit. In such cases, registered participants will be notified promptly.</p>
+                    
+                    <h2 class="pb-6 text-xl font-medium text-wuiSlate-800">Code of Conduct:</h2>
+                    
+                    <p class="pb-6 text-md">Participants must adhere to a code of conduct that promotes a respectful and inclusive environment during the summit. Violation of this code may result in expulsion without a refund.</p>
+
+                    <h2 class="text-xl font-medium text-wuiSlate-800">Intellectual Property:</h2>
+                    
+                    <p class="pb-6 text-md">
+                        <br>
+                        <strong>Ownership:</strong> 
+                        <br>
+                        All materials presented at the Summit, including presentations,
+handouts, recordings, and logos, are the intellectual property of the
+Entrepreneurship Cell, IIT Kharagpur, or their respective creators. 
+                        <br>
+                        <br>
+                        <strong>Usage:</strong>
+                        <br>
+                        Participants may access and use Summit materials for personal or
+educational purposes only. Unauthorized reproduction, distribution, or
+commercialization of any content is strictly prohibited.
+                        <br>
+                        <br>
+                        <strong>Attribution:</strong>
+                        <br>
+                        When referencing Summit materials, participants must properly cite
+the source and acknowledge the ownership of the Entrepreneurship Cell, IIT
+Kharagpur.
+                    </p>
+
+                    <h2 class="text-xl font-medium text-wuiSlate-800">Privacy Policy:</h2>
+                    
+                    <p class="pb-6 text-md">
+                        <br>
+                        <strong>Data Collection:</strong> 
+                        <br>
+                        We collect registration information including names, emails,
+and affiliations.
+                        <br>
+                        <br>
+                        <strong>Data Usage:</strong>
+                        <br>
+                        Information is used solely for Summit communication, registration
+verification, and internal analysis. E-Cell reserves the right to use the information
+provided including sharing with third-party organisations.
+                        <br>
+                        <br>
+                        <strong>Data Security:</strong>
+                        <br>
+                        We take appropriate measures to protect your information from
+unauthorized access, disclosure, alteration, or destruction.
+                    </p>
+                    
+                    <h2 class="pb-6 text-xl font-medium text-wuiSlate-800">Dispute Resolution:</h2>
+                    
+                    <p class="pb-6 text-md">For any questions or concerns regarding these Terms and Conditions, please contact us at: 
+                    <br>
+                    unnat.agrawal@ecell-iitkgp.org,
+                    <br>
+                    suryansh.dubey@ecell-iitkgp.org,
+                    <br>
+                    smriti.bansal@ecell-iitkgp.org
+                    <br>
+                    We strive to resolve all issues amicably and efficiently.</p>
+                    </div>
+                </div>
+            </div> 
+        </section>
+</template>
+
+<script>
+</script>
+
+<style>
+</style>

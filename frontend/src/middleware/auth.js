@@ -11,7 +11,7 @@ export default async function auth({ next, store }) {
   // Function to refresh access token
   async function refreshAccessToken() {
     try {
-      const response = await axios.post('http://localhost:8000/auth/jwt/refresh/', {
+      const response = await axios.post('https://api-ges.ecell-iitkgp.org/auth/jwt/refresh/', {
         refresh: refreshToken,
       });
       localStorage.setItem('accessToken', response.data.access);
@@ -23,7 +23,7 @@ export default async function auth({ next, store }) {
   }
 
   try {
-    await axios.post('http://localhost:8000/auth/jwt/verify/', {
+    await axios.post('https://api-ges.ecell-iitkgp.org/auth/jwt/verify/', {
       token: accessToken,
     });
     return next();

@@ -1,5 +1,5 @@
 import auth from "@/middleware/auth";
-import {student, startup, professional} from "@/middleware/permissions";
+import {student, startup, professional, contingent} from "@/middleware/permissions";
 
 const routes = [
   {
@@ -13,11 +13,29 @@ const routes = [
     name: "reg",
     component: () => import("@/views/auth/register"),
   },
+
+  {
+    path: "/register/campus-ambassador",
+    name: "ca-reg",
+    component: () => import("@/views/auth/ca-register"),
+  },
   
   {
     path: "/forgot-password",
     name: "forgot-password",
     component: () => import("@/views/auth/forgot-password.vue"),
+  },
+
+  {
+    path: "/termsandconditions",
+    name: "termsandconditions",
+    component: () => import("@/views/common/payment_terms.vue"),
+  },
+
+  {
+    path: "/refundpolicy",
+    name: "payment-refundpolicy",
+    component: () => import("@/views/common/refundpolicy.vue"),
   },
   
   {
@@ -41,14 +59,26 @@ const routes = [
 
       {
         path: "register",
-        name: "post register",
+        name: "register",
         component: () => import("@/views/student/postreg-form.vue"),
+      },
+
+      {
+        path: "events",
+        name: "events",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "competitions",
+        name: "competitions",
+        component: () => import("@/views/utility/comming-soon"),
       },
 
       {
         path: "payment",
         name: "payment",
-        component: () => import("@/views/utility/comming-soon"),
+        component: () => import("@/views/utility/temp-payment"),
       },
 
       {
@@ -87,6 +117,18 @@ const routes = [
         component: () => import("@/views/contact"),
       },
 
+      // {
+      //   path: "faq",
+      //   name: "faq",
+      //   component: () => import("@/views/utility/comming-soon"),
+      // },
+
+      // {
+      //   path: "contact",
+      //   name: "contact",
+      //   component: () => import("@/views/utility/comming-soon"),
+      // },
+
       {
         path: "blank-page",
         name: "blank-page",
@@ -121,9 +163,22 @@ const routes = [
       },
 
       {
+        path: "events",
+        name: "startup events",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "competitions",
+        name: "startup competitions",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+
+      {
         path: "payment",
         name: "startup payment",
-        component: () => import("@/views/utility/comming-soon"),
+        component: () => import("@/views/utility/temp-payment"),
       },
 
       {
@@ -186,14 +241,14 @@ const routes = [
 
       {
         path: "register",
-        name: "professional post register",
+        name: "professional-register",
         component: () => import("@/views/professional/postreg-form.vue"),
       },
 
       {
         path: "payment",
         name: "professional payment",
-        component: () => import("@/views/utility/comming-soon"),
+        component: () => import("@/views/utility/temp-payment"),
       },
 
       {
@@ -229,6 +284,76 @@ const routes = [
       {
         path: "contact",
         name: "professional contact",
+        component: () => import("@/views/contact"),
+      },
+
+    ],
+  },
+
+  {
+    path: "/contingent",
+    name: "Contingent",
+    redirect: "/contingent/home",
+    component: () => import("@/Layout/index.vue"),
+    meta: {
+      middleware: [auth, contingent],
+    },
+    children: [
+
+      {
+        path: "home",
+        name: "contingent home",
+        component: () => import("@/views/professional/home/index.vue"),
+        meta: {
+          hide: true,
+        },
+      },
+
+      {
+        path: "register",
+        name: "contingent-register",
+        component: () => import("@/views/professional/postreg-form.vue"),
+      },
+
+      {
+        path: "payment",
+        name: "contingent payment",
+        component: () => import("@/views/utility/temp-payment"),
+      },
+
+      {
+        path: "travel",
+        name: "contingent travel",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "accomodation",
+        name: "contingent accomodation",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "map",
+        name: "contingent map",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "certificate",
+        name: "contingent certificate",
+        component: () => import("@/views/utility/comming-soon"),
+      },
+
+      {
+        path: "faq",
+        name: "contingent faq",
+        component: () => import("@/views/faq"),
+      },
+
+      {
+        path: "contact",
+        name: "contingent contact",
         component: () => import("@/views/contact"),
       },
 
