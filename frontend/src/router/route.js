@@ -1,5 +1,5 @@
 import auth from "@/middleware/auth";
-import {student, startup, professional, contingent} from "@/middleware/permissions";
+import {student, startup, professional, contingent, admin} from "@/middleware/permissions";
 
 const routes = [
   {
@@ -355,6 +355,28 @@ const routes = [
         path: "contact",
         name: "contingent contact",
         component: () => import("@/views/contact"),
+      },
+
+    ],
+  },
+
+  {
+    path: "/admin",
+    name: "Admin",
+    redirect: "/admin/home",
+    component: () => import("@/Layout/index.vue"),
+    meta: {
+      middleware: [auth, admin],
+    },
+    children: [
+
+      {
+        path: "home",
+        name: "admin home",
+        component: () => import("@/views/admin/home/index.vue"),
+        meta: {
+          hide: true,
+        },
       },
 
     ],

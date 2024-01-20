@@ -1,37 +1,30 @@
 <template>
   <div class="loginwrapper">
     <div class="lg-inner-column">
-      <div class="left-column relative z-[1]">
-        <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
+      <div class="left-column relative z-[1] bg-[#010214]" style="background-color: #010214 !important;">
+        <div class="max-w-[520px] pt-24 ltr:pl-20 rtl:pr-20 text-center bg-[#010214]">
           <router-link to="/">
             <img
-              src="@/assets/images/logo/ecell-logo.png"
+              :src="logoWhite"
               alt=""
-              class="mb-10"
-              v-if="!this.$store.themeSettingsStore.isDark"
-            />
-            <img
-              src="@/assets/images/logo/ecell-logo-white.png"
-              alt=""
-              class="mb-10"
-              v-else
+              class="mb-4 mx-auto h-20"
             />
           </router-link>
 
-          <h4>
-            Unlock your Project
-            <span class="text-slate-800 dark:text-slate-400 font-bold"
-              >performance</span
-            >
-          </h4>
-        </div>
-        <div class="absolute left-0 bottom-[-130px] h-full w-full z-[-1]">
+          <p class=" mb-6">presents</p>
+
           <img
-            src="@/assets/images/auth/ils1.svg"
-            alt=""
-            class="h-full w-full object-contain"
-          />
+              src="../../../../src/assets/images/logo/ges.svg"
+              alt=""
+              class="mb-4 mx-auto"
+            />
+
         </div>
+
+        <div className="bg-[#010214] absolute bottom-[-20vh] -z-10 ">
+          <earth></earth>
+        </div>
+        
       </div>
       <div class="right-column relative">
         <div
@@ -49,7 +42,7 @@
             <div class="text-center 2xl:mb-10 mb-5">
               <h4 class="font-medium mb-4">Forgot Your Password?</h4>
               <div class="text-slate-500 dark:text-slate-400 text-base">
-                Reset Password with Dashcode.
+                Reset Password
               </div>
             </div>
             <div
@@ -82,10 +75,22 @@
 </template>
 <script>
 import ForgotPass from "./common/forgot";
+import earth from "./common/earth.vue"
+
+// Image Import
+import logoWhite from "@/assets/images/logo/ecell-logo-white.png"
+import logo from "@/assets/images/logo/ecell-logo.png"
+import sideImg from "@/assets/images/auth/ils1.svg"
 
 export default {
+  data () {
+    return {
+      logoWhite,logo,sideImg
+    }
+  },
   components: {
     ForgotPass,
+    earth,
   },
 };
 </script>

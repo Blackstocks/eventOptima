@@ -213,6 +213,21 @@ export const professionalMenuItems = [
   },
 ];
 
+export const adminMenuItems = [
+  {
+    isHeadr: true,
+    title: "menu",
+  },
+
+  {
+    title: "Dashboard",
+    icon: "heroicons-outline:home",
+    isOpen: true,
+    link: "home",
+  },
+  
+];
+
 // menuseetins
 
 export const ProfileMenu = [

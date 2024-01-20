@@ -69,3 +69,21 @@ export async function contingent({ next, store }) {
     }
   
 }
+
+export async function admin({ next, store }) {
+    
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if(!user){
+        return next({ name: "Login" });
+    }
+
+    if((user.user_type == 'Admin')){
+        return next();
+    }
+    
+    else{
+        return next({ name: "Login" });
+    }
+  
+}

@@ -20,13 +20,13 @@
       classInput="h-[48px]"
     />
 
-    <!-- <div class="flex justify-between">
+    <div class="flex justify-between">
       <router-link
         to="/forgot-password"
         class="text-sm text-slate-800 dark:text-slate-400 leading-6 font-medium"
         >Forgot Password?</router-link
       >
-    </div> -->
+    </div>
 
     <button type="submit" class="btn btn-dark block w-full text-center">
       Sign in
@@ -122,6 +122,10 @@ export default {
 
           else if(user.user_type == "Contingent"){
             router.push("/contingent/home");
+          }
+
+          else if(user.user_type == "Admin"){
+            router.push("/admin/home");
           }
           
           toast.success("Login successfully", { timeout: 2000 });

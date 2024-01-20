@@ -104,7 +104,7 @@
 <script>
 // import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
-import { studentMenuItems, startupMenuItems, professionalMenuItems } from "../../constant/data";
+import { studentMenuItems, startupMenuItems, professionalMenuItems, adminMenuItems } from "../../constant/data";
 import Navmenu from "./Navmenu";
 import { gsap } from "gsap";
 import { SimpleBar } from "simplebar-vue3";
@@ -128,6 +128,10 @@ function Menu(){
 
     case "Professional":
       var menuItems = professionalMenuItems;
+      break;
+
+    case "Admin":
+      var menuItems = adminMenuItems;
       break;
   
     default:
